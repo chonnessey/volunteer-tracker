@@ -19,9 +19,13 @@ end
 
 post('/projects') do
   title = params[:title]
-  project = Project.new({:title=> title, :id => nil})
-  project.save()
+  @project = Project.new({:title=> title, :id => nil})
+  @project.save()
   redirect to('/projects')
+end
+
+get('projects/edit') do
+  erb(:edit_project)
 end
 
 get('/projects/:id') do
